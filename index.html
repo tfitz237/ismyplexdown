@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                display: flex;
+                align-items: stretch;
+                justify-content: center;
+                background-color: #3f4245;
+                font-family: sans-serif;
+            }
+            .wrapper {
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: -1;
+            }
+            .bg {
+                background-image: url(https://app.plex.tv/auth/static/87668ded7bd2bec699c6.png);
+                background-size: 100% 100%;
+            }
+
+            .content-wrapper {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                height: 100px;
+                justify-content: center;
+                min-height: 40px;
+
+                background-color: #fff;
+                border-radius: 6px;
+                max-width: 650px;
+                padding: 40px 20px;
+                transition: opacity .2s;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg wrapper">
+            <div class="bg"></div>
+        </div>
+        <div class="content-wrapper">
+                <h2>
+                    Is PlexaFitz down?
+                </h2>
+                <h1 id="status">
+                    YES
+                </h1>
+        </div>
+        <script type="text/javascript">
+            function updateText(good) {
+                const element = document.getElementById('status');
+                element.innerText = good ? 'YES' : 'NO';
+            }
+            function checkSite(site) {
+                fetch(site)
+                .then(function(response) {
+                    updateText(response.status == 200);
+                })
+                .catch(function(response) {
+                    updateText(false);
+                });
+            }
+            checkSite('https://plex.fitz.vip');
+
+        </script>
+    </body>
+</html>
