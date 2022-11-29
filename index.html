@@ -59,7 +59,7 @@
                 element.innerText = good ? 'NO' : 'YES';
             }
             function checkSite(site) {
-                fetch(site, { mode: 'no-cors', })
+                fetch(site)
                 .then(function(response) {
                     updateText(response.status == 200 || response.status == 401);
                 })
