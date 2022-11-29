@@ -59,7 +59,7 @@
                 element.innerText = good ? 'NO' : 'YES';
             }
             function checkSite(site) {
-                fetch(site)
+                fetch(site, { mode: 'no-cors', })
                 .then(function(response) {
                     updateText(response.status == 200 || response.status == 401);
                 })
@@ -67,7 +67,7 @@
                     updateText( response.status == 401 ||false);
                 });
             }
-            checkSite('https://plex.fitz.vip');
+            checkSite('https://plex.fitz.vip/api');
 
         </script>
     </body>
