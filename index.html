@@ -61,7 +61,7 @@
             function checkSite(site) {
                 fetch(site)
                 .then(function(response) {
-                    updateText(response.status == 200);
+                    updateText(response.status == 200 || response.status == 401);
                 })
                 .catch(function(response) {
                     updateText(false);
