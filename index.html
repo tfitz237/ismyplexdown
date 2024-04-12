@@ -52,23 +52,17 @@
                 <h1 id="status">
                     YES
                 </h1>
+                <iframe src="https://plex.fitz.vip/" style="display: none; visibility: hidden;"></iframe>
         </div>
         <script type="text/javascript">
             function updateText(good) {
                 const element = document.getElementById('status');
                 element.innerText = good ? 'NO' : 'YES';
             }
-            function checkSite(site) {
-                fetch(site)
-                .then(function(response) {
-                    updateText(response.status == 200 || response.status == 401);
-                })
-                .catch(function(response) {
-                    updateText( response.status == 401 ||false);
-                });
-            }
-            checkSite('https://plex.fitz.vip/api');
-
+            document.querySelector('iframe').addEventListener('load', function() {
+                updateText(true);
+                document.querySelector('.content-wrapper').removeChild(document.querySelector('iframe'));
+           });
         </script>
     </body>
 </html>
